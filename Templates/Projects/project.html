@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title%} index{% endblock %}
+{% block body %}
+{% load static %}
+<style>
+    #Course_title{
+        margin: 125px 0px 41px 0px;
+}
+</style>
+        <h2 class="h2 section-title " id="Course_title">
+            <span class="span">Tutorials</span> for backbencher
+          </h2>
+        <div class="notes_container">
+            {% for post in allposts %}
+            <div class="notes_card">
+                <span class="img-note">
+                    <img src="{{post.project_image}}" alt="Python Notes">
+                </span>
+                <h3>{{post.Project_name}}</h3>
+                <h4>{{post.category}}</h4>
+                <div class="button-container">
+                    <a href="/course-items/project/{{post.slug}}">
+                    <button>Explore</button>
+                </a>
+                </div>
+            </div>    
+            {% endfor %} 
+        </div>
+{% endblock%}

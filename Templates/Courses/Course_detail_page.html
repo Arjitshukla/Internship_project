@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% block title%} index{% endblock %}
+{% block body %}
+{% load static %}
+<style>
+    main_sidebar {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        background-color: #f0f0f0;
+    }
+
+    .media-center {
+        max-width: 100%;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .media-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .aligned-video {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    .aligned-video {
+        border: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .media-center {
+            padding: 15px;
+        }
+
+        .aligned-video {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .aligned-video {
+            max-width: 100%;
+        }
+    }
+
+    #container {
+        display: flex;
+        width: 100%;
+
+        margin: 106px 0 21px 0px;
+        padding: 3px;
+
+    }
+
+    #sidebar h2 {
+        margin-top: 13px;
+        font-size: larger;
+    }
+
+    #sidebar ul {
+        list-style: none;
+        padding-top: 29px;
+    }
+
+    #sidebar li {
+        margin-bottom: 10px;
+    }
+
+    #sidebar a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+    }
+
+    #content {
+        background-color: #fff;
+        padding: 40px;
+        flex-grow: 1;
+        border-radius: 5px;
+    }
+
+    #content h1,
+    #content h2 {
+        margin-top: 0;
+        color: #1e1e1e;
+    }
+
+    #content ul {
+        list-style: disc;
+        padding-left: 20px;
+    }
+
+    #content li {
+        margin-bottom: 10px;
+    }
+
+    #button {
+        display: inline-block;
+        background-color: #6c3483;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+
+    #button:hover {
+        background-color: #552766;
+    }
+
+    #sidebar {
+        background-color: #fff;
+        padding: 10px;
+        width: 35rem;
+        margin-right: 20px;
+        border-radius: 5px;
+        max-height: 82vh;
+        /* Set a maximum height */
+        overflow-y: auto;
+        /* Add vertical scroll when content exceeds height */
+
+    }
+
+    #content {
+        background-color: #fff;
+        padding: 20px;
+        flex-grow: 1;
+        border-radius: 5px;
+        max-height: 82vh;
+        /* Set a maximum height */
+        overflow-y: auto;
+        /* Add vertical scroll when content exceeds height */
+    }
+
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        #container {
+            flex-direction: column;
+        }
+
+        #sidebar {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        #content {
+            width: 100%;
+        }
+    }
+    .button-container button {
+            margin-top: 20px;
+        }
+        .button-container  button {
+            text-decoration: none;
+            width:100%;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+</style>
+
+</style>
+
+<main_sidebar>
+
+    <div id="container">
+        <div id="sidebar">
+            <h2>Topics in {{ card.title }} </h2>
+            <hr>
+            <hr>
+            <ul>
+                {% for topic in topics %}
+
+                <li>
+                    <a href="{% url 'topic_detail' card_id=card.cad_id topic_id=topic.top_id %}">📖
+                        {{topic.Chapter_title }}</a>
+                </li>
+                {% empty %}
+                <li>No topics available for this course.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="content">
+            <button id="button" style="float: right;">Next >></button>
+            <button id="button" style="float: left;">
+                << Previous</button>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h1> Let's Talk About : {{ selected_topic.Chapter_title }}</h1><br>
+                    <p>{{ selected_topic.detail.content |safe }}</p><br>
+
+                    {% if video_url %}
+                    <div class="video_container">
+                        <div class="media-container">
+                            <div class="media-center">
+                                <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/qARXCXvQXKY?si=GidNleiBiOhUKkUW"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div><br><br><br>
+                    {% else %}
+                    <p style="text-align: center;">Sorry! Video not available at the moment...🧐🧐🧐</p>
+                    {% endif %} <br><br>
+                    <br>
+                    <!-- More details based on your model fields -->
+                    <h2> {{ selected_topic.detail.t1 }}</h2><br><br>
+                    <p>{{ selected_topic.detail.content_t1 |safe }}</p><br><br>
+                    <p>{{ selected_topic.detail.code_t1 |safe }}</p><br><hr><hr> <br><br>
+
+                    <div class="Assesments">
+                       <h1 style="text-align: center;color: #354f50;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">DO its yourself ! </h1>
+                   </div><br><br>
+                          <form method="POST">
+                              {% csrf_token %}
+                   
+                              <h2> 📖  MCQ Questions 👨‍💻 </h2><br><br>
+                              {% for mcq in mcqs %}
+                              <p style="color: rgb(30, 30, 30);">{{ mcq.question |safe }}</p>
+                              <label><input type="radio" name="mcq_{{ mcq.id }}" value="{{ mcq.option_1 }}"> {{ mcq.option_1 |safe}}</label><br>
+                              <label><input type="radio" name="mcq_{{ mcq.id }}" value="{{ mcq.option_2 }}"> {{ mcq.option_2 |safe}}</label><br>
+                              <label><input type="radio" name="mcq_{{ mcq.id }}" value="{{ mcq.option_3 }}"> {{ mcq.option_3 |safe}}</label><br>
+                              <label><input type="radio" name="mcq_{{ mcq.id }}" value="{{ mcq.option_4 }}"> {{ mcq.option_4 |safe}}</label><br>
+                              {% endfor %} <br><br><br>
+                   
+                              <h2> 📖 Fill in the Blanks 👨‍💻</h2> <br><br>
+                              {% for fb in fill_blanks %}
+                              <p>{{ fb.question |safe}}</p><br>
+                              <input type="text" name="fill_{{ fb.id }}" placeholder="➡️ Your Answer..." autocomplete="False">
+                              {% endfor %}
+                              <div class="button-container">
+                                <button type="submit">Submit</button>
+                            </div>
+                             
+                          </form>
+                        
+        </div>
+        
+    </div>
+</main_sidebar>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } */
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .community-section {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .community-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+  
+  .experts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  /* Style for individual expert cards */
+  .expert {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .expert:hover {
+    transform: translateY(-10px);
+  }
+  
+  .expert img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* margin-bottom: 15px; */
+    margin: 2px 2px 9px 40px;
+  }
+  
+  .expert h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+  
+  .expert p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* Responsive styling for various screen sizes */
+  
+  /* For extra small devices (portrait phones, less than 600px) */
+  @media (max-width: 600px) {
+    .experts-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .expert {
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .community-section h1 {
+      font-size: 2rem;
+    }
+  }
+  
+  /* For small devices (landscape phones, less than 768px) */
+  @media (max-width: 350px) {
+    .experts-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .expert {
+      width: 100%;
+      max-width: 350px;
+    }
+  
+    .community-section h1 {
+      font-size: 2.25rem;
+    }
+  }
+  
+  /* For medium devices (tablets, less than 1024px) */
+  @media (max-width: 1024px) {
+    .experts-container {
+      justify-content: space-evenly;
+    }
+  
+    .expert {
+      width: 40%;
+      max-width: 250px;
+    }
+  
+    .community-section h1 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  /* For large devices (desktops and laptops) */
+  @media (min-width: 1025px) {
+    .experts-container {
+      justify-content: space-around;
+    }
+    .expert {
+      width: 18%;
+    }
+  }
+  

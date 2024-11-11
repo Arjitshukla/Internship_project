@@ -1,0 +1,20 @@
+.alert {
+    position: fixed;
+    top:98px ;
+    left:10px ;
+    padding: 18px;
+    font-size: medium;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
+.alert.success {
+    background-color: #81ea9b; /* Light green */
+    color: #484a49; /* Dark green */
+    border: 1px solid #c3e6cb; /* Green border */
+}
+.alert.error {
+    background-color: #f8d7da; /* Light red */
+    color: #ff808c; /* Dark red */
+    border: 1px solid #f5c6cb; /* Red border */
+}

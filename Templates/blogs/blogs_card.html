@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title%} index{% endblock %}
+{% block body %}
+{% load static %}
+
+<style>
+    #section-subtitle{
+        color: rgb(255, 146, 146);
+        font-weight: 900;
+    }
+
+</style>
+  <section class="section blog has-bg-image" id="blog" aria-label="blog"
+  
+  style="background-image: url('{% static "Images_folder/blog-bg.svg" %}')">
+  <div class="container">
+      <h2 class="h2 section-title">  Blogs Articles</h2>
+      <p class="section-subtitle" id="section-subtitle" >Latest Articles 🖥️</p>
+      <ul class="grid-list">
+      
+        {% for post in allposts %}
+          <li>
+              <div class="blog-card">
+                  <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
+                      <img src="/media/{{post.blog_card_img}}"  width="370" height="370" loading="lazy"
+                          alt="Become A Better Blogger: Content Planning" class="img-cover">
+                  </figure>
+                  <div class="card-content">
+                      <a href="/blogs/{{post.slug}}" class="card-btn" aria-label="read more">
+                          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                      </a>
+                      <h3 class="h3">
+                          <a href="/blogs/{{post.slug}}" class="card-title">{{post.title}}</a>
+                      </h3>
+                      <a href="/blogs/{{post.slug}}" class="card-subtitle"><h5>By <b>{{post.author}}</b></h5></a>
+                      <ul class="card-meta-list">
+                          <li class="card-meta-item">
+                              <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+                              <span class="span">published :-{{post.created_at}}</span>
+                          </li>
+                          {% comment %} <li class="card-meta-item">
+                              <ion-icon name="chatbubbles-outline" aria-hidden="true"></ion-icon>
+                              <span class="span">{{post.updated_at}}</span>
+                          </li> {% endcomment %}
+                      </ul>
+                      <p class="card-text">
+                        {{post.content|slice:"90" |safe}}
+                      </p>
+                  </div>
+              </div>
+          </li>
+          {% endfor %}
+
+
+
+      </ul>
+      <img src="{% static "Images_folder/blog-shape.png" %}" width="186" height="186" loading="lazy" alt=""
+          class="shape blog-shape">
+  </div>
+</section>
+{% endblock %}
+

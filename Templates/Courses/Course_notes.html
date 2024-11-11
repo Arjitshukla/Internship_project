@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title%} index{% endblock %}
+{% block body %}
+
+{% load static %}
+<style>
+    #notes_title{
+        margin: 125px 0px 41px 0px;
+}
+   
+</style>
+<h2 class="h2 section-title " id="notes_title">
+    HandWritten <span class="span">Course Notes</span> For Coders
+  </h2>
+  <div class="notes_container" id="notes_container">
+      {% for items in notes %}
+    <div class="notes_card">
+        <span class="img-note">
+            <img src="/media/{{items.Card_image}}" alt="Python Notes">
+        </span>
+        <h3>{{items.tech_title}} Notes</h3>
+        <div class="button-container">
+                <button ><a href="{{items.tech_Notes_pdf}}" download> Notes PDF</a></button>
+                <button><a href="{{items.tech_Cheatsheet_pdf }}" download > Cheetsheet Pdf</a> </button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

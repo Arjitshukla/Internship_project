@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title%} index{% endblock %}
+{% block body %}
+{% load static %}
+<style>
+           body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .result-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .result-title {
+            font-size: 24px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .score {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+</style>
+<div class="result-container">
+    <h1 class="result-title">Quiz Completed!</h1>
+    <p class="score">{{ message }}</p>  <!-- Display the success message with the score -->
+
+    <div class="button-container">
+        <a href="{% url 'card_list' %}">Back to Courses</a>  <!-- Button to return to course cards -->
+    </div>
+</div>
+{% endblock%}

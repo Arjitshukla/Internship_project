@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% block title%} index{% endblock %}
+{% block body %}
+{% load static %}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /* Body and Container */
+    .signUp_setion {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f5f5f5;
+        padding: 20px;
+        margin-top:6rem;
+    }
+
+    .signUp-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        background-color: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    /* Form Elements */
+    .signUp-form h2 {
+        margin-bottom: 20px;
+        color: #4CAF50;
+    }
+
+    .input-field {
+        margin-bottom: 20px;
+    }
+
+    .input-field input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        outline: none;
+        font-size: 16px;
+    }
+
+    .forgot-link {
+        display: block;
+        margin-bottom: 20px;
+        color: #888;
+        text-decoration: none;
+    }
+
+    .forgot-link:hover {
+        color: #4CAF50;
+    }
+
+    .signUp_btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .signUp_btn:hover {
+        background-color: #45a049;
+    }
+
+    .signup-link {
+        margin-top: 20px;
+    }
+
+    .signup-link a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+
+    .signup-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .signUp-container {
+            max-width: 90%;
+            padding: 30px;
+        }
+
+        .input-field input,
+        .signUp_btn {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .signUp-form h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .signUp-container {
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        .input-field input,
+        .signUp_btn {
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        .signUp-form h2 {
+            font-size: 20px;
+        }
+
+        .forgot-link,
+        .signup-link {
+            font-size: 12px;
+        }
+    }
+</style>
+<div class="signUp_setion">
+    <div class="signUp-container">
+        <form class="signUp-form" action="{% url 'handlesignup' %}" method="post">
+            {% csrf_token %}
+         
+      
+            <div class="input-field">
+                <input type="text" placeholder="FullName" name="username" autocomplete="off" required>
+            </div>
+            <div class="input-field">
+                <input type="text" placeholder="User Email" name="email"autocomplete="off" required>
+            </div>
+            <div class="input-field">
+                <input type="password" placeholder="Password" name="pass1" autocomplete="off" required>
+            </div>
+            <div class="input-field">
+                <input type="password" placeholder="Conform Password" name="pass2" autocomplete="off" required>
+            </div>
+            <button type="submit" class="signUp_btn">SignUp</button>
+            <p class="signup-link">you have an account 👉? <a href="{% url 'handlelogin' %}">log In now</a></p>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

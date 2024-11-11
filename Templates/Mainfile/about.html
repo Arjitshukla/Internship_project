@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block title%} index{% endblock %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'Css_file/leader_pic.css' %}"/>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+    body {
+        line-height: 1.6;
+        color: #333;
+        margin-top: 10rem;
+    }
+
+    .case-study {
+        background-color: rgb(85, 101, 209);
+        /* Orange background color */
+        color: #fff;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .case-study .overlay {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .case-study h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .case-study p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .success-story {
+        padding: 50px 20px;
+        background-color: #f4f4f4;
+        text-align: center;
+    }
+
+    .success-story h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #383838;
+        font-weight: bold;
+
+    }
+
+    .success-story p {
+        font-size: 1.5rem;
+        max-width: 700px;
+        margin: 10px auto;
+        line-height: 1.8;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .case-study h1 {
+            font-size: 2rem;
+        }
+
+        .case-study p {
+            font-size: 1rem;
+        }
+
+        .success-story h2 {
+            font-size: 1.5rem;
+        }
+
+        .success-story p {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+<div class="About_section">
+    <section class="case-study">
+        <h2>🖥️ why Teqpeers Technology ? 🖥️</h2>
+    </section>
+{% for items in alltext %}   
+    <section class="success-story">
+        <p>{{items.Short_content}}</p>
+            <h2>{{items.heading_line}}</h2>
+            <p>{{items.content1}}</p>
+                <p>{{items.content1}}</p>
+    {% endfor %}
+
+    </section>
+</div>
+<section class="community-section">
+    <h1 class="h1 section-title">
+        The Professional <span class="span">Software Engineer</span> Trainer
+    </h1>
+    <div class="experts-container">
+      <div class="expert">
+        <img src="{% static "Team_leader/shray.jpg" %}" alt="Mr. Uttom">
+        <h2>Mr.SHRAY SALVI</h2>
+        <h3>Software engineer</h3>
+      </div>
+    </div>
+  </section>
+  <section class="community-section">
+    <h1>💫 Teams Member💫</h1>
+    <div class="experts-container">
+      <div class="expert">
+        <img src="{% static "Images_folder/Arjit.jpg" %}" alt="Mr. Uttom">
+        <h3>Arjit Shukla </h3>
+        <h3>Team-Leader 👨‍💻  </h3>
+      </div>
+      <div class="expert">
+        <img src="{% static "Images_folder/team3.png" %}" alt="Mr. Uttom">
+        <h3>Monu Sen</h3>
+        <h3>Team member</h3>
+      </div>
+      <div class="expert">
+        <img src="{% static "Images_folder/team3.png" %}" alt="Mr. Uttom">
+        <h3>Inkita Agrawal</h3>
+        <h3>Team member</h3>
+      </div>
+      <div class="expert">
+        <img src="{% static "Images_folder/team3.png" %}" alt="Mr. Uttom">
+        <h3>praveen </h3>
+        <h3>Team member</h3>
+      </div>
+      <div class="expert">
+        <img src="{% static "Images_folder/team3.png" %}" alt="Mr. Uttom">
+        <h3>Shubham Mishra</h3>
+        <p>The automated process all your website tasks.</p>
+      </div>
+      <div class="expert">
+        <img src="{% static "Images_folder/team3.png" %}" alt="Mr. Uttom">
+        <h3>Vidhi</h3>
+        <h3>Team member</h3>
+      </div>
+    </div>
+  </section>
+
+
+
+{% endblock %}
